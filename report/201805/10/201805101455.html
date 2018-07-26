@@ -1,0 +1,926 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>QSrunFast interface automationTest reports</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    
+<style type="text/css" media="screen">
+body        { font-family: Microsoft YaHei,Tahoma,arial,helvetica,sans-serif;padding: 20px; font-size: 80%; }
+table       { font-size: 100%; }
+/* -- heading ---------------------------------------------------------------------- */
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+/* -- report ------------------------------------------------------------------------ */
+#total_row  { font-weight: bold; }
+.passCase   { color: #5cb85c; }
+.failCase   { color: #d9534f; font-weight: bold; }
+.errorCase  { color: #f0ad4e; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+</style>
+
+</head>
+<body >
+<script language="javascript" type="text/javascript">
+output_list = Array();
+/*level 调整增加只显示通过用例的分类 --Findyou
+0:Summary //all hiddenRow
+1:Failed  //pt hiddenRow, ft none
+2:Pass    //pt none, ft hiddenRow
+3:All     //pt none, ft none
+*/
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level == 2 || level == 0 ) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level < 2) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+    }
+    //加入【详细】切换文字变化 --Findyou
+    detail_class=document.getElementsByClassName('detail');
+	//console.log(detail_class.length)
+	if (level == 3) {
+		for (var i = 0; i < detail_class.length; i++){
+			detail_class[i].innerHTML="outline"
+		}
+	}
+	else{
+			for (var i = 0; i < detail_class.length; i++){
+			detail_class[i].innerHTML="detail"
+		}
+	}
+}
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        //ID修改 点 为 下划线 -Findyou
+        tid0 = 't' + cid.substr(1) + '_' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        //修改点击无法收起的BUG，加入【详细】切换文字变化 --Findyou
+        if (toHide) {
+            document.getElementById(tid).className = 'hiddenRow';
+            document.getElementById(cid).innerText = "detail"
+        }
+        else {
+            document.getElementById(tid).className = '';
+            document.getElementById(cid).innerText = "outline"
+        }
+    }
+}
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+</script>
+<div class='heading'>
+<h1>QSrunFast interface automationTest reports</h1>
+<p class='attribute'><strong>Tester : </strong> tester</p>
+<p class='attribute'><strong>Start Time : </strong> 2018-05-10 14:54:41</p>
+<p class='attribute'><strong>Duration : </strong> 0:00:29.589289</p>
+<p class='attribute'><strong>Status : </strong> ALL 6, Pass 5, Failure 1, Passing rate: 83.33%</p>
+
+<p class='description'>测试环境: 192.168.1.111</p>
+</div>
+
+
+<p id='show_detail_line'>
+<a class="btn btn-primary" href='javascript:showCase(0)'>Summary{ 83.33% }</a>
+<a class="btn btn-danger" href='javascript:showCase(1)'>Failed{ 1 }</a>
+<a class="btn btn-success" href='javascript:showCase(2)'>Passed{ 5 }</a>
+<a class="btn btn-info" href='javascript:showCase(3)'>ALL{ 6 }</a>
+</p>
+<table id='result_table' class="table table-condensed table-bordered table-hover">
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row' class="text-center success" style="font-weight: bold;font-size: 14px;">
+    <td>Test Group/Test case</td>
+    <td>Count</td>
+    <td>Pass</td>
+    <td>Fail</td>
+    <td>Error</td>
+    <td>View</td>
+</tr>
+
+<tr class='passClass warning'>
+    <td>signin.QS_ConnectGameServer.openAndClosePosition</td>
+    <td class="text-center">1</td>
+    <td class="text-center">1</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c1',1)" class="detail" id='c1'>Detail</a></td>
+</tr>
+
+<tr id='pt1_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_runFast_1</div></td>
+    <td colspan='5' align='left'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_1'>pass</button>
+    <div id='div_pt1_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_1'>pass</button>
+    <div id='div_pt1_1' class="collapse in">
+    <pre>
+    
+pt1_1: ---&gt; 【connetCallBack】: True
+---&gt; 【connetCallBack】: True
+client1 收到1000登陆后创建房间
+client1 接收到1001进入房间后准备
+服务端响应命令: 1000
+1000 : 连接服务器接收错误码为: 0
+
+服务端响应命令: 1999
+房间号： 0
+重新连接 - 房间号： 0
+类型 
+***************************************************************************
+服务端响应命令: 1070
+1070 ：通知解散房间MID 677905
+
+服务端响应命令: 9999
+服务端响应命令: 8080
+服务端响应命令: 1086
+服务端响应命令: 1996
+1996 : 创建房间接收错误码为: 0
+
+打印房间号&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;： 312229
+服务端响应命令: 1001
+1001 : 加入房间的返回码为： 0
+1001 : 加入房间未知 2016071201
+1001 : 加入房间剩余局数： 10
+1001 : 加入房间房间的总局数： 10
+1001 : 加入房间房间的ID： 312229
+1001 : 加入房间房间的类型： A1
+1001 : 加入房间玩法： 0
+1001 : 加入房间首局是否黑桃3先出： 0
+***************************************************************************
+服务端响应命令: 1002
+1002 ：加入房间后，服务器返回的玩家人数:  1
+1002 ：加入房间后，服务器返回的座位号:  1
+1002 ：加入房间后，服务器返回的玩家MID:  124917
+1002 ：加入房间后，服务器返回的玩家GP:  101
+1002 ：加入房间后，服务器返回的玩家性别:  2
+1002 ：加入房间后，服务器返回的玩家名称:  游客
+1002 ：加入房间后，服务器返回的头像地址:  http://192.168.1.111/Public/Home/Images/user_logo/default.jpg
+1002 ：加入房间后，服务器返回的VIP:  0
+1002 ：加入房间后，服务器返回的金币数量:  456
+1002 ：加入房间后，服务器返回的积分:  0
+1002 ：加入房间后，服务器返回的ip:  
+服务端响应命令: 1078
+1078 ：返回的桌面(座位号)： 1
+1078 ：返回的桌面(玩家人数)： 1
+1078 ：服务器返回的桌面(座位号)： 1
+1078 ：服务器返回的桌面(玩家MID)： 124917
+1078 ：服务器返回的桌面(当前分数)： 0
+1078 ：服务器返回的桌面(是否准备(1:准备))： 0
+1078 ：服务器返回的桌面(未知)： 0
+1078 ：服务器返回的桌面(是否暂离（1:离开）)： 0
+1078 ：返服务器回的桌面(手牌数量)： 0
+1078 ：服务器返回的桌面(桌面打牌的数量)： 0
+1078 ：服务器返回的桌面(牌型): -1
+1078 ：服务器返回的桌面(目前出牌的座位号): 0
+服务端响应命令: 1006
+1006 ：准备后返回的用户MID： 124917
+1006 ：准备后返回的座位号： 1
+1006 ：准备后服务器返回的错误码： 0
+1006 ：准备后服务器返回的seatNum： [{'midID_1006': 124917, 'seatNum_1006': 1}]
+start dissolev_room_6001:  0
+client2 收到1996登陆后join房间:  312229
+服务端响应命令: 1000
+1000 : 连接服务器接收错误码为: 0
+
+client2 接收到1001进入房间后准备
+服务端响应命令: 1999
+房间号： 0
+重新连接 - 房间号： 0
+类型 
+***************************************************************************
+服务端响应命令: 1070
+1070 ：通知解散房间MID 677905
+
+服务端响应命令: 9999
+服务端响应命令: 8080
+服务端响应命令: 8084
+服务端响应命令: 1001
+1001 : 加入房间的返回码为： 0
+1001 : 加入房间未知 2016071201
+1001 : 加入房间剩余局数： 10
+1001 : 加入房间房间的总局数： 10
+1001 : 加入房间房间的ID： 312229
+1001 : 加入房间房间的类型： A1
+1001 : 加入房间玩法： 0
+1001 : 加入房间首局是否黑桃3先出： 0
+***************************************************************************
+服务端响应命令: 1002
+1002 ：加入房间后，服务器返回的玩家人数:  2
+1002 ：加入房间后，服务器返回的座位号:  1
+1002 ：加入房间后，服务器返回的玩家MID:  124917
+1002 ：加入房间后，服务器返回的玩家GP:  101
+1002 ：加入房间后，服务器返回的玩家性别:  2
+1002 ：加入房间后，服务器返回的玩家名称:  游客
+1002 ：加入房间后，服务器返回的头像地址:  http://192.168.1.111/Public/Home/Images/user_logo/default.jpg
+1002 ：加入房间后，服务器返回的VIP:  0
+1002 ：加入房间后，服务器返回的金币数量:  456
+1002 ：加入房间后，服务器返回的积分:  0
+1002 ：加入房间后，服务器返回的ip:  
+服务端响应命令: 1078
+1078 ：返回的桌面(座位号)： 1
+1078 ：返回的桌面(玩家人数)： 2
+1078 ：服务器返回的桌面(座位号)： 1
+1078 ：服务器返回的桌面(玩家MID)： 124917
+1078 ：服务器返回的桌面(当前分数)： 0
+1078 ：服务器返回的桌面(是否准备(1:准备))： 1
+1078 ：服务器返回的桌面(未知)： 0
+1078 ：服务器返回的桌面(是否暂离（1:离开）)： 0
+1078 ：返服务器回的桌面(手牌数量)： 0
+1078 ：服务器返回的桌面(桌面打牌的数量)： 0
+1078 ：服务器返回的桌面(牌型): -1
+1078 ：服务器返回的桌面(目前出牌的座位号): 2
+服务端响应命令: 1006
+1006 ：准备后返回的用户MID： 124918
+1006 ：准备后返回的座位号： 2
+1006 ：准备后服务器返回的错误码： 0
+1006 ：准备后服务器返回的seatNum： [{'midID_1006': 124917, 'seatNum_1006': 1}, {'midID_1006': 124918, 'seatNum_1006': 2}]
+服务端响应命令: 1008
+1008 ：准备后游戏开始返回码为： 0
+1008 ：准备后游戏开始目前剩余的局数: 10
+1008 ：准备后游戏开始房间的总局数: 10
+**************************************************************************
+服务端响应命令: 1005
+服务端响应命令: 1006
+1006 ：准备后返回的用户MID： 124918
+1006 ：准备后返回的座位号： 2
+1006 ：准备后服务器返回的错误码： 0
+1006 ：准备后服务器返回的seatNum： [{'midID_1006': 124917, 'seatNum_1006': 1}, {'midID_1006': 124918, 'seatNum_1006': 2}, {'midID_1006': 124918, 'seatNum_1006': 2}]
+服务端响应命令: 1008
+1008 ：准备后游戏开始返回码为： 0
+1008 ：准备后游戏开始目前剩余的局数: 10
+1008 ：准备后游戏开始房间的总局数: 10
+**************************************************************************
+服务端响应命令: 1035
+1035 ：游戏开始发牌的数量: 16
+1035 ：游戏开始发牌的[]牌面:  ['As', '6c', '2d', '9c', 'Kd', 'Ad', '6h', '8d', 'Td', '3h', '6s', '9s', 'Ks', '6d', '5d', 'Th']
+1035 ：游戏开始显示的坐位号: 1
+cardList:  [{'seatNum_1035': 1, 'cards': ['As', '6c', '2d', '9c', 'Kd', 'Ad', '6h', '8d', 'Td', '3h', '6s', '9s', 'Ks', '6d', '5d', 'Th']}]
+所有人的牌规整后的集合:  [{'seatNum': 1, 'indexList': [0, 2, 3, 3, 3, 3, 5, 6, 6, 7, 7, 10, 10, 11, 11, 12], 'bomList': [{'index': 3, 'boms': ['6c', '6h', '6s', '6d']}], 'pokers': [{'poker': '3h', 'index': 0}, {'poker': '5d', 'index': 2}, {'poker': '6c', 'index': 3}, {'poker': '6h', 'index': 3}, {'poker': '6s', 'index': 3}, {'poker': '6d', 'index': 3}, {'poker': '8d', 'index': 5}, {'poker': '9c', 'index': 6}, {'poker': '9s', 'index': 6}, {'poker': 'Td', 'index': 7}, {'poker': 'Th', 'index': 7}, {'poker': 'Kd', 'index': 10}, {'poker': 'Ks', 'index': 10}, {'poker': 'As', 'index': 11}, {'poker': 'Ad', 'index': 11}, {'poker': '2d', 'index': 12}]}]
+***************************************************************************
+服务端响应命令: 1069
+1069 : 所有玩家都准备后通知第一个出牌的人的坐位号： 0
+***************************************************************************
+服务端响应命令: 1035
+1035 ：游戏开始发牌的数量: 16
+1035 ：游戏开始发牌的[]牌面:  ['7h', '4d', 'Qc', '3d', '7c', 'Qs', 'Qd', '5h', '9h', 'Kh', 'Jd', '8c', 'Ts', 'Ah', '5c', '4s']
+1035 ：游戏开始显示的坐位号: 2
+cardList:  [{'seatNum_1035': 1, 'cards': ['As', '6c', '2d', '9c', 'Kd', 'Ad', '6h', '8d', 'Td', '3h', '6s', '9s', 'Ks', '6d', '5d', 'Th']}, {'seatNum_1035': 2, 'cards': ['7h', '4d', 'Qc', '3d', '7c', 'Qs', 'Qd', '5h', '9h', 'Kh', 'Jd', '8c', 'Ts', 'Ah', '5c', '4s']}]
+所有人的牌规整后的集合:  [{'seatNum': 1, 'indexList': [0, 2, 3, 3, 3, 3, 5, 6, 6, 7, 7, 10, 10, 11, 11, 12], 'bomList': [{'index': 3, 'boms': ['6c', '6h', '6s', '6d']}], 'pokers': [{'poker': '3h', 'index': 0}, {'poker': '5d', 'index': 2}, {'poker': '6c', 'index': 3}, {'poker': '6h', 'index': 3}, {'poker': '6s', 'index': 3}, {'poker': '6d', 'index': 3}, {'poker': '8d', 'index': 5}, {'poker': '9c', 'index': 6}, {'poker': '9s', 'index': 6}, {'poker': 'Td', 'index': 7}, {'poker': 'Th', 'index': 7}, {'poker': 'Kd', 'index': 10}, {'poker': 'Ks', 'index': 10}, {'poker': 'As', 'index': 11}, {'poker': 'Ad', 'index': 11}, {'poker': '2d', 'index': 12}]}, {'seatNum': 2, 'indexList': [0, 1, 1, 2, 2, 4, 4, 5, 6, 7, 8, 9, 9, 9, 10, 11], 'bomList': [], 'pokers': [{'poker': '3d', 'index': 0}, {'poker': '4d', 'index': 1}, {'poker': '4s', 'index': 1}, {'poker': '5h', 'index': 2}, {'poker': '5c', 'index': 2}, {'poker': '7h', 'index': 4}, {'poker': '7c', 'index': 4}, {'poker': '8c', 'index': 5}, {'poker': '9h', 'index': 6}, {'poker': 'Ts', 'index': 7}, {'poker': 'Jd', 'index': 8}, {'poker': 'Qc', 'index': 9}, {'poker': 'Qs', 'index': 9}, {'poker': 'Qd', 'index': 9}, {'poker': 'Kh', 'index': 10}, {'poker': 'Ah', 'index': 11}]}]
+***************************************************************************
+服务端响应命令: 1069
+1069 : 所有玩家都准备后通知第一个出牌的人的坐位号： 0
+***************************************************************************
+服务端响应命令: 1071
+1071 : 当前玩家出牌的座位号： 1
+1071 : 下一家牌是否报单： 0
+1071 : 当前玩家是否要不起（1:要不起 0:出牌）： 0
+1071 : 最近一次出牌座位号： 1
+1071 : 打出牌的数量 0
+1071 []牌面: []
+1071 : 牌的类型（-1:无效、0:单张、1:一对、2:连队、3:三个、4:三带一、5:顺子、6:飞机、8:炸弹、10:四带二、12:四带三）
+服务端响应命令: 1071
+1071 : 当前玩家出牌的座位号： 1
+1071 : 下一家牌是否报单： 0
+1071 : 当前玩家是否要不起（1:要不起 0:出牌）： 0
+1071 : 最近一次出牌座位号： 1
+1071 : 打出牌的数量 0
+1071 []牌面: []
+1071 : 牌的类型（-1:无效、0:单张、1:一对、2:连队、3:三个、4:三带一、5:顺子、6:飞机、8:炸弹、10:四带二、12:四带三）
+client1_seatNum 的扑克信息:  {'seatNum': 1, 'indexList': [0, 2, 3, 3, 3, 3, 5, 6, 6, 7, 7, 10, 10, 11, 11, 12], 'bomList': [{'index': 3, 'boms': ['6c', '6h', '6s', '6d']}], 'pokers': [{'poker': '3h', 'index': 0}, {'poker': '5d', 'index': 2}, {'poker': '6c', 'index': 3}, {'poker': '6h', 'index': 3}, {'poker': '6s', 'index': 3}, {'poker': '6d', 'index': 3}, {'poker': '8d', 'index': 5}, {'poker': '9c', 'index': 6}, {'poker': '9s', 'index': 6}, {'poker': 'Td', 'index': 7}, {'poker': 'Th', 'index': 7}, {'poker': 'Kd', 'index': 10}, {'poker': 'Ks', 'index': 10}, {'poker': 'As', 'index': 11}, {'poker': 'Ad', 'index': 11}, {'poker': '2d', 'index': 12}]}
+client1_seatNum 上一个出牌的信息:  []
+client1_seatNum: wo yao chupai  le la .................
+client1_seatNum: chupai  wancheng . :  ['3h']
+client1_seatNum 的扑克信息:  {'seatNum': 1, 'indexList': [0, 2, 3, 3, 3, 3, 5, 6, 6, 7, 7, 10, 10, 11, 11, 12], 'bomList': [{'index': 3, 'boms': ['6c', '6h', '6s', '6d']}], 'pokers': [{'poker': '3h', 'index': 0}, {'poker': '5d', 'index': 2}, {'poker': '6c', 'index': 3}, {'poker': '6h', 'index': 3}, {'poker': '6s', 'index': 3}, {'poker': '6d', 'index': 3}, {'poker': '8d', 'index': 5}, {'poker': '9c', 'index': 6}, {'poker': '9s', 'index': 6}, {'poker': 'Td', 'index': 7}, {'poker': 'Th', 'index': 7}, {'poker': 'Kd', 'index': 10}, {'poker': 'Ks', 'index': 10}, {'poker': 'As', 'index': 11}, {'poker': 'Ad', 'index': 11}, {'poker': '2d', 'index': 12}]}
+client1_seatNum 上一个出牌的信息:  []
+client1_seatNum: wo yao chupai  le la .................
+client1_seatNum: chupai  wancheng . :  ['3h']
+client1_seatNum 的扑克信息:  {'seatNum': 1, 'indexList': [0, 2, 3, 3, 3, 3, 5, 6, 6, 7, 7, 10, 10, 11, 11, 12], 'bomList': [{'index': 3, 'boms': ['6c', '6h', '6s', '6d']}], 'pokers': [{'poker': '3h', 'index': 0}, {'poker': '5d', 'index': 2}, {'poker': '6c', 'index': 3}, {'poker': '6h', 'index': 3}, {'poker': '6s', 'index': 3}, {'poker': '6d', 'index': 3}, {'poker': '8d', 'index': 5}, {'poker': '9c', 'index': 6}, {'poker': '9s', 'index': 6}, {'poker': 'Td', 'index': 7}, {'poker': 'Th', 'index': 7}, {'poker': 'Kd', 'index': 10}, {'poker': 'Ks', 'index': 10}, {'poker': 'As', 'index': 11}, {'poker': 'Ad', 'index': 11}, {'poker': '2d', 'index': 12}]}
+client1_seatNum 上一个出牌的信息:  []
+client1_seatNum: wo yao chupai  le la .................
+client1_seatNum: chupai  wancheng . :  ['3h']
+client1_seatNum 的扑克信息:  {'seatNum': 1, 'indexList': [0, 2, 3, 3, 3, 3, 5, 6, 6, 7, 7, 10, 10, 11, 11, 12], 'bomList': [{'index': 3, 'boms': ['6c', '6h', '6s', '6d']}], 'pokers': [{'poker': '3h', 'index': 0}, {'poker': '5d', 'index': 2}, {'poker': '6c', 'index': 3}, {'poker': '6h', 'index': 3}, {'poker': '6s', 'index': 3}, {'poker': '6d', 'index': 3}, {'poker': '8d', 'index': 5}, {'poker': '9c', 'index': 6}, {'poker': '9s', 'index': 6}, {'poker': 'Td', 'index': 7}, {'poker': 'Th', 'index': 7}, {'poker': 'Kd', 'index': 10}, {'poker': 'Ks', 'index': 10}, {'poker': 'As', 'index': 11}, {'poker': 'Ad', 'index': 11}, {'poker': '2d', 'index': 12}]}
+client1_seatNum 上一个出牌的信息:  []
+client1_seatNum: wo yao chupai  le la .................
+client1_seatNum: chupai  wancheng . :  ['3h']
+client1_seatNum 的扑克信息:  {'seatNum': 1, 'indexList': [0, 2, 3, 3, 3, 3, 5, 6, 6, 7, 7, 10, 10, 11, 11, 12], 'bomList': [{'index': 3, 'boms': ['6c', '6h', '6s', '6d']}], 'pokers': [{'poker': '3h', 'index': 0}, {'poker': '5d', 'index': 2}, {'poker': '6c', 'index': 3}, {'poker': '6h', 'index': 3}, {'poker': '6s', 'index': 3}, {'poker': '6d', 'index': 3}, {'poker': '8d', 'index': 5}, {'poker': '9c', 'index': 6}, {'poker': '9s', 'index': 6}, {'poker': 'Td', 'index': 7}, {'poker': 'Th', 'index': 7}, {'poker': 'Kd', 'index': 10}, {'poker': 'Ks', 'index': 10}, {'poker': 'As', 'index': 11}, {'poker': 'Ad', 'index': 11}, {'poker': '2d', 'index': 12}]}
+client1_seatNum 上一个出牌的信息:  []
+client1_seatNum: wo yao chupai  le la .................
+服务端响应命令: 1073
+1073 : 出牌的座位号： 1
+1073 : 出牌的数量： 1
+1073 ：出牌的[]牌面:  ['3h']
+1073 : 牌型： 0
+1073 : 手上剩余的牌数量:  15
+lastPlay cards:  {'seatNum': 1, 'cards': ['3h']}
+服务端响应命令: 1071
+1071 : 当前玩家出牌的座位号： 2
+1071 : 下一家牌是否报单： 0
+1071 : 当前玩家是否要不起（1:要不起 0:出牌）： 0
+1071 : 最近一次出牌座位号： 1
+1071 : 打出牌的数量 1
+1071 []牌面: ['3h']
+1071 : 牌的类型（-1:无效、0:单张、1:一对、2:连队、3:三个、4:三带一、5:顺子、6:飞机、8:炸弹、10:四带二、12:四带三）
+client2_seatNum 监听是否是当前用户先出牌:  {'seatNum': 2, 'indexList': [0, 1, 1, 2, 2, 4, 4, 5, 6, 7, 8, 9, 9, 9, 10, 11], 'bomList': [], 'pokers': [{'poker': '3d', 'index': 0}, {'poker': '4d', 'index': 1}, {'poker': '4s', 'index': 1}, {'poker': '5h', 'index': 2}, {'poker': '5c', 'index': 2}, {'poker': '7h', 'index': 4}, {'poker': '7c', 'index': 4}, {'poker': '8c', 'index': 5}, {'poker': '9h', 'index': 6}, {'poker': 'Ts', 'index': 7}, {'poker': 'Jd', 'index': 8}, {'poker': 'Qc', 'index': 9}, {'poker': 'Qs', 'index': 9}, {'poker': 'Qd', 'index': 9}, {'poker': 'Kh', 'index': 10}, {'poker': 'Ah', 'index': 11}]}
+client2_seatNum 上一个出牌的信息:  ['3h']
+client2_seatNum: wo yao chupai  le la .................
+client1_seatNum: chupai  wancheng . :  ['3h']
+client1_seatNum 的扑克信息:  {'seatNum': 2, 'indexList': [0, 1, 1, 2, 2, 4, 4, 5, 6, 7, 8, 9, 9, 9, 10, 11], 'bomList': [], 'pokers': [{'poker': '3d', 'index': 0}, {'poker': '4d', 'index': 1}, {'poker': '4s', 'index': 1}, {'poker': '5h', 'index': 2}, {'poker': '5c', 'index': 2}, {'poker': '7h', 'index': 4}, {'poker': '7c', 'index': 4}, {'poker': '8c', 'index': 5}, {'poker': '9h', 'index': 6}, {'poker': 'Ts', 'index': 7}, {'poker': 'Jd', 'index': 8}, {'poker': 'Qc', 'index': 9}, {'poker': 'Qs', 'index': 9}, {'poker': 'Qd', 'index': 9}, {'poker': 'Kh', 'index': 10}, {'poker': 'Ah', 'index': 11}]}
+client1_seatNum 上一个出牌的信息:  ['3h']
+client1_seatNum: wo yao chupai  le la .................
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 1
+1072 ：服务器返回(错误码)： 0
+服务端响应命令: 1073
+1073 : 出牌的座位号： 1
+1073 : 出牌的数量： 1
+1073 ：出牌的[]牌面:  ['3h']
+1073 : 牌型： 0
+1073 : 手上剩余的牌数量:  15
+lastPlay cards:  {'seatNum': 1, 'cards': ['3h']}
+服务端响应命令: 1071
+1071 : 当前玩家出牌的座位号： 2
+1071 : 下一家牌是否报单： 0
+1071 : 当前玩家是否要不起（1:要不起 0:出牌）： 0
+1071 : 最近一次出牌座位号： 1
+1071 : 打出牌的数量 1
+1071 []牌面: ['3h']
+1071 : 牌的类型（-1:无效、0:单张、1:一对、2:连队、3:三个、4:三带一、5:顺子、6:飞机、8:炸弹、10:四带二、12:四带三）
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 1
+1072 ：服务器返回(错误码)： -3
+client1_seatNum: chupai  wancheng . :  ['4d']
+client2_seatNum: chupai  wancheng . :  ['4d']
+client2_seatNum: chupai  wancheng . :  ['4s']
+client1_seatNum: chupai  wancheng . :  ['4s']
+client1_seatNum: chupai  wancheng . :  ['5h']
+client2_seatNum: chupai  wancheng . :  ['5h']
+client1_seatNum: chupai  wancheng . :  ['5c']
+client2_seatNum: chupai  wancheng . :  ['5c']
+client2_seatNum: chupai  wancheng . :  ['7h']
+client2_seatNum: chupai  wancheng . :  ['7c']
+client1_seatNum: chupai  wancheng . :  ['7h']
+client1_seatNum: chupai  wancheng . :  ['7c']
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 1
+1072 ：服务器返回(错误码)： -3
+client1_seatNum: chupai  wancheng . :  ['8c']
+client2_seatNum: chupai  wancheng . :  ['8c']
+client1_seatNum: chupai  wancheng . :  ['9h']
+client1_seatNum: chupai  wancheng . :  ['Ts']
+client2_seatNum: chupai  wancheng . :  ['9h']
+client2_seatNum: chupai  wancheng . :  ['Ts']
+client2_seatNum: chupai  wancheng . :  ['Jd']
+client2_seatNum: chupai  wancheng . :  ['Qc']
+client1_seatNum: chupai  wancheng . :  ['Jd']
+client2_seatNum: chupai  wancheng . :  ['Qs']
+client1_seatNum: chupai  wancheng . :  ['Qc']
+client1_seatNum: chupai  wancheng . :  ['Qs']
+client2_seatNum: chupai  wancheng . :  ['Qd']
+client2_seatNum: chupai  wancheng . :  ['Kh']
+client2_seatNum: chupai  wancheng . :  ['Ah']
+client2_seatNum 监听是否是当前用户先出牌:  {'seatNum': 2, 'indexList': [0, 1, 1, 2, 2, 4, 4, 5, 6, 7, 8, 9, 9, 9, 10, 11], 'bomList': [], 'pokers': [{'poker': '3d', 'index': 0}, {'poker': '4d', 'index': 1}, {'poker': '4s', 'index': 1}, {'poker': '5h', 'index': 2}, {'poker': '5c', 'index': 2}, {'poker': '7h', 'index': 4}, {'poker': '7c', 'index': 4}, {'poker': '8c', 'index': 5}, {'poker': '9h', 'index': 6}, {'poker': 'Ts', 'index': 7}, {'poker': 'Jd', 'index': 8}, {'poker': 'Qc', 'index': 9}, {'poker': 'Qs', 'index': 9}, {'poker': 'Qd', 'index': 9}, {'poker': 'Kh', 'index': 10}, {'poker': 'Ah', 'index': 11}]}
+client2_seatNum 上一个出牌的信息:  ['3h']
+client2_seatNum: wo yao chupai  le la .................
+client1_seatNum: chupai  wancheng . :  ['Qd']
+client2_seatNum: chupai  wancheng . :  ['4d']
+client1_seatNum: chupai  wancheng . :  ['Kh']
+client2_seatNum: chupai  wancheng . :  ['4s']
+client1_seatNum: chupai  wancheng . :  ['Ah']
+client2_seatNum: chupai  wancheng . :  ['5h']
+client2_seatNum: chupai  wancheng . :  ['5c']
+client2_seatNum: chupai  wancheng . :  ['7h']
+client2_seatNum: chupai  wancheng . :  ['7c']
+client2_seatNum: chupai  wancheng . :  ['8c']
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 2
+1072 ：服务器返回(错误码)： 0
+服务端响应命令: 1073
+1073 : 出牌的座位号： 2
+1073 : 出牌的数量： 1
+1073 ：出牌的[]牌面:  ['4d']
+1073 : 牌型： 0
+1073 : 手上剩余的牌数量:  15
+lastPlay cards:  {'seatNum': 2, 'cards': ['4d']}
+服务端响应命令: 1071
+1071 : 当前玩家出牌的座位号： 1
+1071 : 下一家牌是否报单： 0
+1071 : 当前玩家是否要不起（1:要不起 0:出牌）： 0
+1071 : 最近一次出牌座位号： 2
+1071 : 打出牌的数量 1
+1071 []牌面: ['3h', '4d']
+1071 : 牌的类型（-1:无效、0:单张、1:一对、2:连队、3:三个、4:三带一、5:顺子、6:飞机、8:炸弹、10:四带二、12:四带三）
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 2
+1072 ：服务器返回(错误码)： -3
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 2
+1072 ：服务器返回(错误码)： -3
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 2
+1072 ：服务器返回(错误码)： -3
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 2
+1072 ：服务器返回(错误码)： -3
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 2
+1072 ：服务器返回(错误码)： -3
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 2
+1072 ：服务器返回(错误码)： -3
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 2
+1072 ：服务器返回(错误码)： -3
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 2
+1072 ：服务器返回(错误码)： -3
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 2
+1072 ：服务器返回(错误码)： -3
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 2
+1072 ：服务器返回(错误码)： -3
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 2
+1072 ：服务器返回(错误码)： -3
+client2_seatNum: chupai  wancheng . :  ['9h']
+client2_seatNum: chupai  wancheng . :  ['Ts']
+client2_seatNum: chupai  wancheng . :  ['Jd']
+client2_seatNum: chupai  wancheng . :  ['Qc']
+服务端响应命令: 1073
+1073 : 出牌的座位号： 2
+1073 : 出牌的数量： 1
+1073 ：出牌的[]牌面:  ['4d']
+1073 : 牌型： 0
+1073 : 手上剩余的牌数量:  15
+lastPlay cards:  {'seatNum': 2, 'cards': ['4d']}
+服务端响应命令: 1071
+1071 : 当前玩家出牌的座位号： 1
+1071 : 下一家牌是否报单： 0
+1071 : 当前玩家是否要不起（1:要不起 0:出牌）： 0
+1071 : 最近一次出牌座位号： 2
+1071 : 打出牌的数量 1
+1071 []牌面: ['3h', '4d']
+1071 : 牌的类型（-1:无效、0:单张、1:一对、2:连队、3:三个、4:三带一、5:顺子、6:飞机、8:炸弹、10:四带二、12:四带三）
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 1
+1072 ：服务器返回(错误码)： -1
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 1
+1072 ：服务器返回(错误码)： -1
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 1
+1072 ：服务器返回(错误码)： -1
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 1
+1072 ：服务器返回(错误码)： -1
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 1
+1072 ：服务器返回(错误码)： -1
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 1
+1072 ：服务器返回(错误码)： -1
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 1
+1072 ：服务器返回(错误码)： -1
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 1
+1072 ：服务器返回(错误码)： -1
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 1
+1072 ：服务器返回(错误码)： -1
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 1
+1072 ：服务器返回(错误码)： -1
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 1
+1072 ：服务器返回(错误码)： -1
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 1
+1072 ：服务器返回(错误码)： -1
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 1
+1072 ：服务器返回(错误码)： -1
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 1
+1072 ：服务器返回(错误码)： -1
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 1
+1072 ：服务器返回(错误码)： -1
+client2_seatNum: chupai  wancheng . :  ['Qs']
+client2_seatNum: chupai  wancheng . :  ['Qd']
+client2_seatNum: chupai  wancheng . :  ['Kh']
+client2_seatNum: chupai  wancheng . :  ['Ah']
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 2
+1072 ：服务器返回(错误码)： -3
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 2
+1072 ：服务器返回(错误码)： -3
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 2
+1072 ：服务器返回(错误码)： -3
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 2
+1072 ：服务器返回(错误码)： -3
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 2
+1072 ：服务器返回(错误码)： -3
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 2
+1072 ：服务器返回(错误码)： -3
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 2
+1072 ：服务器返回(错误码)： -3
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 2
+1072 ：服务器返回(错误码)： -3
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 2
+1072 ：服务器返回(错误码)： -3
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 2
+1072 ：服务器返回(错误码)： -3
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 2
+1072 ：服务器返回(错误码)： -3
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 1
+1072 ：服务器返回(错误码)： -1
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 1
+1072 ：服务器返回(错误码)： -1
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 2
+1072 ：服务器返回(错误码)： -3
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 2
+1072 ：服务器返回(错误码)： -3
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 2
+1072 ：服务器返回(错误码)： -3
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 2
+1072 ：服务器返回(错误码)： -3
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 2
+1072 ：服务器返回(错误码)： -3
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 2
+1072 ：服务器返回(错误码)： -3
+服务端响应命令: 1072
+1072 ：服务器返回(座位号)： 2
+1072 ：服务器返回(错误码)： -3
+end dissolev_room_6001:  0
+服务端响应命令: 6001
+服务端响应命令: 6001
+end dissolev_room_6001:  0
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='failClass warning'>
+    <td>signin.QS_ConnectGameServer_singleUser.openAndClosePosition</td>
+    <td class="text-center">1</td>
+    <td class="text-center">0</td>
+    <td class="text-center">1</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c2',1)" class="detail" id='c2'>Detail</a></td>
+</tr>
+
+<tr id='ft2_1' class='none'>
+    <td class='failCase'><div class='testcase'>test_runFast_1</div></td>
+    <td colspan='5' align='left'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_1'>fail</button>
+    <div id='div_ft2_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_1'>fail</button>
+    <div id='div_ft2_1' class="collapse in">
+    <pre>
+    
+ft2_1: client1 连接服务
+服务端响应命令: 6002
+6002 ：解散房间返回的错误码 0
+
+***************************************************************************
+服务端响应命令: 6001
+服务端响应命令: 1066
+服务端响应命令: 8080
+服务端响应命令: 1077
+服务端响应命令: 1004
+1004 ：离开房间返回的用户MID： 124917
+1004 ：离开房间返回的错误码(0：成功)： 0
+服务端响应命令: 1004
+1004 ：离开房间返回的用户MID： 124918
+1004 ：离开房间返回的错误码(0：成功)： 0
+服务端响应命令: 6001
+服务端响应命令: 1086
+服务端响应命令: 1066
+服务端响应命令: 8080
+服务端响应命令: 1077
+服务端响应命令: 1004
+1004 ：离开房间返回的用户MID： 124917
+1004 ：离开房间返回的错误码(0：成功)： 0
+---&gt; 【connetCallBack】: True
+服务端响应命令: 1000
+1000 : 连接服务器接收错误码为: 0
+
+服务端响应命令: 1999
+房间号： 0
+重新连接 - 房间号： 0
+类型 
+***************************************************************************
+服务端响应命令: 1070
+1070 ：通知解散房间MID 312229
+
+服务端响应命令: 9999
+服务端响应命令: 8080
+服务端响应命令: 1000
+1000 : 连接服务器接收错误码为: 3
+
+---&gt; 【exceptionCallBack】: ('102', 'connection_lost')
+Traceback (most recent call last):
+  File "E:\AutoDebug\QS_Debug3333\test\signin\QS_ConnectGameServer_singleUser.py", line 63, in test_runFast_1
+    self.assertEqual(QS_runFast.varList.connected_1000,1)
+AssertionError: 0 != 1
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='passClass warning'>
+    <td>signin.QS_UserJoinRoomID.openAndClosePosition</td>
+    <td class="text-center">1</td>
+    <td class="text-center">1</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c3',1)" class="detail" id='c3'>Detail</a></td>
+</tr>
+
+<tr id='pt3_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_runFast_1</div></td>
+    <td colspan='5' align='left'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt3_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt3_1'>pass</button>
+    <div id='div_pt3_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt3_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt3_1'>pass</button>
+    <div id='div_pt3_1' class="collapse in">
+    <pre>
+    
+pt3_1: ---&gt; 【connetCallBack】: True
+client1 收到1000登陆后创建房间
+---&gt; 【connetCallBack】: True
+服务端响应命令: 1000
+1000 : 连接服务器接收错误码为: 0
+
+服务端响应命令: 1999
+房间号： 0
+重新连接 - 房间号： 0
+类型 
+***************************************************************************
+服务端响应命令: 9999
+服务端响应命令: 8080
+服务端响应命令: 1000
+1000 : 连接服务器接收错误码为: 3
+
+服务端响应命令: 1086
+服务端响应命令: 1996
+1996 : 创建房间接收错误码为: 0
+
+打印房间号&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;： 797017
+服务端响应命令: 1001
+1001 : 加入房间的返回码为： 0
+1001 : 加入房间未知 2016071201
+1001 : 加入房间剩余局数： 10
+1001 : 加入房间房间的总局数： 10
+1001 : 加入房间房间的ID： 797017
+1001 : 加入房间房间的类型： A1
+1001 : 加入房间玩法： 0
+1001 : 加入房间首局是否黑桃3先出： 0
+***************************************************************************
+服务端响应命令: 1002
+1002 ：加入房间后，服务器返回的玩家人数:  1
+1002 ：加入房间后，服务器返回的座位号:  1
+1002 ：加入房间后，服务器返回的玩家MID:  124917
+1002 ：加入房间后，服务器返回的玩家GP:  101
+1002 ：加入房间后，服务器返回的玩家性别:  2
+1002 ：加入房间后，服务器返回的玩家名称:  游客
+1002 ：加入房间后，服务器返回的头像地址:  http://192.168.1.111/Public/Home/Images/user_logo/default.jpg
+1002 ：加入房间后，服务器返回的VIP:  0
+1002 ：加入房间后，服务器返回的金币数量:  456
+1002 ：加入房间后，服务器返回的积分:  0
+1002 ：加入房间后，服务器返回的ip:  
+服务端响应命令: 1078
+1078 ：返回的桌面(座位号)： 1
+1078 ：返回的桌面(玩家人数)： 1
+1078 ：服务器返回的桌面(座位号)： 1
+1078 ：服务器返回的桌面(玩家MID)： 124917
+1078 ：服务器返回的桌面(当前分数)： 0
+1078 ：服务器返回的桌面(是否准备(1:准备))： 0
+1078 ：服务器返回的桌面(未知)： 0
+1078 ：服务器返回的桌面(是否暂离（1:离开）)： 0
+1078 ：返服务器回的桌面(手牌数量)： 0
+1078 ：服务器返回的桌面(桌面打牌的数量)： 0
+1078 ：服务器返回的桌面(牌型): -1
+1078 ：服务器返回的桌面(目前出牌的座位号): 0
+---&gt; 【exceptionCallBack】: ('102', 'connection_lost')
+client2 收到1000登陆后连接
+client2 收到1996登陆后join房间:  797017
+start dissolev_room_6001:  0
+服务端响应命令: 1000
+1000 : 连接服务器接收错误码为: 0
+
+服务端响应命令: 1999
+房间号： 0
+重新连接 - 房间号： 0
+类型 
+***************************************************************************
+服务端响应命令: 1070
+1070 ：通知解散房间MID 312229
+
+服务端响应命令: 9999
+服务端响应命令: 8080
+服务端响应命令: 1001
+1001 : 加入房间的返回码为： 0
+1001 : 加入房间未知 2016071201
+1001 : 加入房间剩余局数： 10
+1001 : 加入房间房间的总局数： 10
+1001 : 加入房间房间的ID： 797017
+1001 : 加入房间房间的类型： A1
+1001 : 加入房间玩法： 0
+1001 : 加入房间首局是否黑桃3先出： 0
+***************************************************************************
+服务端响应命令: 1002
+1002 ：加入房间后，服务器返回的玩家人数:  2
+1002 ：加入房间后，服务器返回的座位号:  1
+1002 ：加入房间后，服务器返回的玩家MID:  124917
+1002 ：加入房间后，服务器返回的玩家GP:  101
+1002 ：加入房间后，服务器返回的玩家性别:  2
+1002 ：加入房间后，服务器返回的玩家名称:  游客
+1002 ：加入房间后，服务器返回的头像地址:  http://192.168.1.111/Public/Home/Images/user_logo/default.jpg
+1002 ：加入房间后，服务器返回的VIP:  0
+1002 ：加入房间后，服务器返回的金币数量:  456
+1002 ：加入房间后，服务器返回的积分:  0
+1002 ：加入房间后，服务器返回的ip:  
+服务端响应命令: 1078
+1078 ：返回的桌面(座位号)： 1
+1078 ：返回的桌面(玩家人数)： 2
+1078 ：服务器返回的桌面(座位号)： 1
+1078 ：服务器返回的桌面(玩家MID)： 124917
+1078 ：服务器返回的桌面(当前分数)： 0
+1078 ：服务器返回的桌面(是否准备(1:准备))： 0
+1078 ：服务器返回的桌面(未知)： 0
+1078 ：服务器返回的桌面(是否暂离（1:离开）)： 0
+1078 ：返服务器回的桌面(手牌数量)： 0
+1078 ：服务器返回的桌面(桌面打牌的数量)： 0
+1078 ：服务器返回的桌面(牌型): -1
+1078 ：服务器返回的桌面(目前出牌的座位号): 2
+服务端响应命令: 1000
+1000 : 连接服务器接收错误码为: 3
+
+服务端响应命令: 1005
+---&gt; 【exceptionCallBack】: ('102', 'connection_lost')
+end dissolev_room_6001:  0
+服务端响应命令: 6001
+服务端响应命令: 6001
+end dissolev_room_6001:  0
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='passClass warning'>
+    <td>signin.QS_runFast_Register_Login_Load_Test.php_Register_Login_Load</td>
+    <td class="text-center">3</td>
+    <td class="text-center">3</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c4',3)" class="detail" id='c4'>Detail</a></td>
+</tr>
+
+<tr id='pt4_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_LoginPhp</div></td>
+    <td colspan='5' align='left'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt4_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt4_1'>pass</button>
+    <div id='div_pt4_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt4_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt4_1'>pass</button>
+    <div id='div_pt4_1' class="collapse in">
+    <pre>
+    
+pt4_1: 服务端响应命令: 6002
+6002 ：解散房间返回的错误码 0
+
+***************************************************************************
+服务端响应命令: 6001
+服务端响应命令: 1086
+服务端响应命令: 8080
+服务端响应命令: 1077
+服务端响应命令: 1004
+1004 ：离开房间返回的用户MID： 124917
+1004 ：离开房间返回的错误码(0：成功)： 0
+服务端响应命令: 6001
+服务端响应命令: 8080
+服务端响应命令: 1077
+服务端响应命令: 1004
+1004 ：离开房间返回的用户MID： 124917
+1004 ：离开房间返回的错误码(0：成功)： 0
+服务端响应命令: 1004
+1004 ：离开房间返回的用户MID： 124918
+1004 ：离开房间返回的错误码(0：成功)： 0
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt4_2' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_RegisterPhp</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">pass</span></td>
+</tr>
+
+<tr id='pt4_3' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_load</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">pass</span></td>
+</tr>
+
+<tr id='total_row' class="text-center active">
+    <td>Total</td>
+    <td>6</td>
+    <td>5</td>
+    <td>1</td>
+    <td>0</td>
+    <td>Passing rate: 83.33%</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+    <div style=" position:fixed;right:50px; bottom:30px; width:20px; height:20px;cursor:pointer">
+    <a href="#"><span class="glyphicon glyphicon-eject" style = "font-size:30px;" aria-hidden="true">
+    </span></a></div>
+    
+</body>
+</html>

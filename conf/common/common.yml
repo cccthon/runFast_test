@@ -1,0 +1,19 @@
+#php测试服务器
+hostName: '192.168.1.111'
+###########################################################
+#测试报告相关参数
+#测试报告标题
+reportTitle: 'QSrunFast interface automationTest reports'
+#测试报告副标题。在Status : ALL 下面
+reportFitTitle: '测试环境: '
+#测试报告邮件内容
+reportMailContent: 'QSFastRun interface AutomationTest finished...'
+reportMailContent2: 'Detail：http://192.168.2.68:9527'
+reportFromAddr: 'autotesting@lewanhuyu.com'
+#下面2个是收件箱
+reportToTest: ['autotesting@lewanhuyu.com','baoxiufen@lewanhuyu.com']
+reportToAll: ['autotesting@lewanhuyu.com']
+reportSubject: '【QSRunFast】【http/sockets】QSrunFast interface AutomationTest reports-'
+reportSmtpServer: 'smtp.exmail.qq.com'
+reportPasswd: 'Lwhy.com@1234'
+############################################################

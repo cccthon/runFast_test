@@ -1,0 +1,84 @@
+php_base_url: "http://192.168.1.111:81/runfast/api/mobile/api.php?api="
+sitemid: "bxf123"
+site_id: 2
+channel_id: 2024
+gp_id: 101
+IP: "192.168.1.28"
+Port: 18001
+
+#####client1的midID和sesskey
+userAmid: 124917
+userAsesskey: "124917-1524190480-101-781d6d9811abde3465236be136d83ab8-101-0-0"
+
+#####client2的midID和sesskey
+userBmid: 124918
+userBsesskey: "124918-1524190480-101-781d6d9811abde3465236be136d83ab8-101-0-0"
+
+
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#客户端请求服务器指令信息
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#客户端请求登陆游戏服务器的指令：1000
+loginRequest_1000: 1000
+#客户端请求游戏服务器创建房间指令：1996
+createRoomRequest_1996: 1996
+#客户端请求游戏服务器进入房间指令：1001
+joinRoomRequest_1001: 1001
+#客户端请求服务器准备指令：1006
+prepareRequest_1006: 1006
+#客户端请求服务器当前出牌指令：1072
+currentPlayCardRequest_1072: 1072
+#客户端请求服务器申请解散房间：6001
+dissolveRoomRequest_6001: 6001
+
+
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#服务器返回给客户端的指令信息
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#游戏服务器返回给客户端请求登陆回参的指令：1000
+loginResponse_1000: 1000
+#连接游戏服务器中发生异常中断返回重新连接的指令：1999
+reconnectResponse_1999: 1999
+#游戏服务器返回给客户端断线后重新发手牌的指令：1083
+reconnectSendCardResponse_1083: 1083
+#游戏服务器返回给客户端创建房间指令：1996
+createRoomResponse_1996: 1996
+#游戏服务器返回给客户端进入房间指令：1001
+joinRoomResponse_1001: 1001
+#游戏服务器返回给客户端开始游戏指令：1008
+startGameResponse_1008: 1008
+#游戏服务器返回给客户端通知第一个人出牌指令：1069
+infromPlayCardResponse_1069: 1069
+#游戏服务器返回给客户端用户离开指令：1076
+userLeaveResponse_1076: 1076
+#游戏服务器返回给客户端通知解散房间：1070
+infromDissolveRoomResponse_1070: 1070
+#游戏服务器返回给客户端有用户进入房间指令：1005
+userJoinRoomInfoResponse_1005: 1005
+#游戏服务器返回给客户端发牌指令：1035
+sendCardResponse_1035: 1035
+#游戏服务器返回给客户端当前出牌的指令：1072
+currentUserPlayCardResponse_1072: 1072
+#游戏服务器返回给客户端通知下一个出牌人指令：1071
+nextUserPlayCardResponse_1071: 1071
+#游戏服务器返回给客户端玩家出的牌的指令：1073
+userPlayCardResponse_1073: 1073
+#游戏服务器返回给客户端的房间信息指令：1002
+roomInfoResponse_1002: 1002
+#游戏服务器返回给客户端的桌面信息指令：1078
+desktopInfoResponse_1078: 1078
+#游戏服务器返回给客户端解散房间投票指令：6002
+dissolveRoomResponse_6002: 6002
+#游戏服务器返回给客户端金币数量：1086
+goldNumberResponse_1086: 1086
+#游戏服务器返回给客户端离开房间：1004
+leaveRoomResponse_1004: 1004
+#游戏服务器返回给客户端小局结束：1074
+overGameResponse_1074: 1074
+#游戏服务器返回给客户端小局结束后返回指令：8082
+overGameResponse8082_8082: 8082
+#游戏服务器返回给客户端总结束指令：8080
+overGameResponse8080_8080: 8080
+
+
+
